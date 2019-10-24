@@ -2,13 +2,6 @@
 - name: Apache server installed
   hosts: web
   tasks:
-  - name: Install httpd
-    include_role:
-      name: install_apache
-
-  - name: Configure firewall
-    include_role:
-      name: configure_firewall
       
   - name: Check if EPEL repo is already configured.
     stat:
@@ -31,3 +24,19 @@
       state: present
     when: not epel_repofile_result.stat.exists
     ignore_errors: "{{ ansible_check_mode }}"
+
+  - name: Install httpd
+    include_role:
+      name: install_apache
+
+  - name: Configure firewall
+    include_role:
+      name: configure_firewall
+ 
+  - name: Setup security hardening
+    include_role:
+      name: security_hardening
+
+  - name: Change motd of the system
+    include_role:
+      name: set_motd
