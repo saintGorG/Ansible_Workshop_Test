@@ -1,0 +1,6 @@
+# from github
+- src: https://github.com/bennojoy/nginx
+
+# from Bitbucket
+- src: git+http://bitbucket.org/willthames/git-ansible-galaxy
+  version: v1.4
