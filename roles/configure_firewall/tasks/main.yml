@@ -7,7 +7,7 @@
 
 - name: firewalld enabled and running
   service:
-    name: "{{ item }}"
+    name: "{{ security_packages }}"
     enabled: true
     state: started
 
